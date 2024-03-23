@@ -47,7 +47,7 @@ GOOGLE_BOOKS_VOLUMES = {
     16: "6rQ0AQAAMAAJ",
     17: "pSA3AAAAIAAJ",
     "18-1": "EWA2AQAAMAAJ",
-    # '18-2': '',
+    # "18-2": "",
     "18-3": "pSE3AAAAIAAJ",
     19: "ty43AAAAIAAJ",
     20: "bAcuAAAAIAAJ",
@@ -100,7 +100,7 @@ GOOGLE_BOOKS_VOLUMES = {
     "47-2": "njZTabXRD8IC",
     "48-1": "Mui4h1rIJEcC",
     "48-2": "2BDvJzoggTsC",
-    # '49-1': 'dlcpXiQJeHYC',
+    # "49-1": "dlcpXiQJeHYC",
     "49-2": "jkxBe6o7uX8C",
     "50-1": "yBGaV09CnQMC",
     "50-2": "fBqZpITr_H0C",
@@ -113,7 +113,7 @@ GOOGLE_BOOKS_VOLUMES = {
     "54-2": "Jfv8-V_NCX0C",
     "55-1": "ZXTvc5fTd7IC",
     "55-2": "a7UNTqmDBTkC",
-    # '56-1': 'igpQxE4JgLkC',
+    # "56-1": "igpQxE4JgLkC",
     "56-2": "WaKfVLeHHBkC",
     "57-1": "_kVwANdU0RUC",
     "57-2": "KRJkyL2n4lUC",
@@ -121,10 +121,10 @@ GOOGLE_BOOKS_VOLUMES = {
     "58-2": "yVT--rETULQC",
     "59-1": "FCZNY8LpqJgC",
     "59-2": "98Thb1Yzc4oC",
-    # '60-1': 'F6F_K4C2tZoC',
+    # "60-1": "F6F_K4C2tZoC",
     "60-2": "B_bQ_5LePswC",
     "61-1": "mU1eSbWKbhIC",
-    # '61-2': 'ftnlW523PF8C',
+    # "61-2": "ftnlW523PF8C",
     "61-3": "jooGtTfAbGgC",
     "61-4": "KTO1yKHVbkAC",
     "61-5": "oUIG9i_Qxn8C",
@@ -136,7 +136,7 @@ GOOGLE_BOOKS_VOLUMES = {
     "63-2": "9P9KA-9fJZ0C",
     "63-3": "VL74odqHIq0C",
     "64-1": "BcnNrYBlTAoC",
-    # '64-2': 'Kpbx7QJuvB4C',
+    # "64-2": "Kpbx7QJuvB4C",
     "64-3": "O0TtaZ_kI44C",
 }
 
@@ -147,7 +147,7 @@ for key, value in GOOGLE_BOOKS_VOLUMES.items():
         print(f"File {pdf_path} already exists")
         continue
     r = requests.get(
-        f'https://www.googleapis.com/books/v1/volumes/{value}?key={os.getenv("GOOGLE_API_KEY")}'
+        f"https://www.googleapis.com/books/v1/volumes/{value}?key={os.getenv('GOOGLE_API_KEY')}"
     )
     download_link = r.json()["accessInfo"]["pdf"]["downloadLink"]
 
