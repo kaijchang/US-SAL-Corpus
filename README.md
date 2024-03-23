@@ -1,9 +1,9 @@
 Depends on [wget](https://www.gnu.org/software/wget/) and [pdftotext](https://www.xpdfreader.com/pdftotext-man.html).
 
-Volumes 1-64, with exceptions, were sourced from Google Books.
+Volumes 1-64, with exceptions, were sourced from [Google Books](https://www.google.com/books/edition/_/jkxBe6o7uX8C?hl=en&gbpv=0&kptab=editions).
 
-Missing volumes (18-2, 49-1, 60-1, 61-2, 64-2) were sourced from HathiTrust.
+Missing volumes (18-2, 49-1, 56-1, 60-1, 61-2, 64-2) were sourced from [HathiTrust](https://catalog.hathitrust.org/Record/007401279).
 
-Volumes 65-132 were sourced from the US Government Publishing Office at GovInfo.
+Volumes 65-132 were sourced from the US Government Publishing Office at [GovInfo](https://www.govinfo.gov/app/collection/statute).
 
 All volumes, as US government documents, are in the public domain. [There are restrictions on the digital images and OCR produced by Google for HathiTrust volumes, but there are no restrictions on the text transcribed from the images.](https://www.hathitrust.org/the-collection/search-access/access-use-policy/#pd-us-google)
