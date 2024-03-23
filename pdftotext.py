@@ -16,13 +16,5 @@ for filename in os.listdir(PDFS_DIR):
         options = []
         subprocess.run(['pdftotext', *options, pdf_path, text_path])
 
-        if filename.startswith('llsl'):
-            with open(text_path, 'r', encoding='latin1') as f:
-                text = f.read()
-                # replace all duplicated characters
-                text = re.sub(r'(\S)\1', r'\1', text)
-            with open(text_path, 'w', encoding='latin1') as f:
-                f.write(text)
-
     else:
         print(f'File {text_path} already exists')
