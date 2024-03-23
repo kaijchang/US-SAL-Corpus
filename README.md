@@ -1,4 +1,4 @@
-Depends on [wget](https://www.gnu.org/software/wget/) and [pdftotext](https://www.xpdfreader.com/pdftotext-man.html).
+Depends on [wget](https://www.gnu.org/software/wget/), [pdftotext](https://www.xpdfreader.com/pdftotext-man.html), and the [Google Books API](https://developers.google.com/books/docs/overview) using the `GOOGLE_API_KEY` from `.env`.
 
 Volumes 1-64, with exceptions, were sourced from [Google Books](https://www.google.com/books/edition/_/jkxBe6o7uX8C?hl=en&gbpv=0&kptab=editions).
 
