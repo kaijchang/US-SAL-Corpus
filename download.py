@@ -20,7 +20,7 @@ def download_file_if_needed(url: str, file_name=None):
     )
     pdf_path = os.path.join(PDFS_DIR, file_name)
     if not os.path.exists(pdf_path):
-        subprocess.run(["wget", "-O", os.path.join(PDFS_DIR, file_name), url])
+        subprocess.run(["wget", "-O", pdf_path, url])
     else:
         print(f"File {pdf_path} already exists")
 
