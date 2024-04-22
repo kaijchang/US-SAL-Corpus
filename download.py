@@ -4,6 +4,7 @@ import os
 import subprocess
 from concurrent.futures import ThreadPoolExecutor
 import tqdm
+import time
 
 import typing
 
@@ -21,12 +22,18 @@ def process_granule(granule: typing.Tuple[str, str]):
     subprocess.run(["pdftotext", granule[0]])
     subprocess.run(f"cat {source_text_path} ff.txt >> {target_text_path}", shell=True)
 
-for i in range(7, 132):
+for i in range(74, 133):
     source_zip_path = os.path.join(TEMP_DIR, f"STATUTE-{i}.zip")
     source_unzipped_path = os.path.join(TEMP_DIR, f"STATUTE-{i}")
 
-    subprocess.run(["wget", "-O", source_zip_path, f"https://www.govinfo.gov/content/pkg/STATUTE-{i}.zip"])
-    subprocess.run(["unzip", "-q", source_zip_path, "-d", TEMP_DIR])
+    while True:
+        try:
+            subprocess.run(["wget", "-O", source_zip_path, f"https://www.govinfo.gov/content/pkg/STATUTE-{i}.zip"], check=True)
+            break
+        except subprocess.CalledProcessError:
+            print(f"Failed to download STATUTE-{i}.zip, retrying in 30 seconds...")
+            time.sleep(30)
+    subprocess.run(["unzip", "-oq", source_zip_path, "-d", TEMP_DIR])
 
     granules = []
 
