@@ -14,13 +14,17 @@ TEXT_DIR = "text"
 os.makedirs(TEMP_DIR, exist_ok=True)
 os.makedirs(TEXT_DIR, exist_ok=True)
 
+
 def process_granule(granule: typing.Tuple[str, str]):
     source_path = os.path.dirname(granule[0])
-    source_text_path = os.path.join(source_path, os.path.basename(granule[0].replace(".pdf", ".txt")))
+    source_text_path = os.path.join(
+        source_path, os.path.basename(granule[0].replace(".pdf", ".txt"))
+    )
     target_text_path = f"{TEXT_DIR}/{granule[1]}.txt"
 
     subprocess.run(["pdftotext", granule[0]])
     subprocess.run(f"cat {source_text_path} ff.txt >> {target_text_path}", shell=True)
+
 
 for i in range(74, 133):
     source_zip_path = os.path.join(TEMP_DIR, f"STATUTE-{i}.zip")
@@ -28,7 +32,15 @@ for i in range(74, 133):
 
     while True:
         try:
-            subprocess.run(["wget", "-O", source_zip_path, f"https://www.govinfo.gov/content/pkg/STATUTE-{i}.zip"], check=True)
+            subprocess.run(
+                [
+                    "wget",
+                    "-O",
+                    source_zip_path,
+                    f"https://www.govinfo.gov/content/pkg/STATUTE-{i}.zip",
+                ],
+                check=True,
+            )
             break
         except subprocess.CalledProcessError:
             print(f"Failed to download STATUTE-{i}.zip, retrying in 30 seconds...")
@@ -39,15 +51,18 @@ for i in range(74, 133):
 
     with open(os.path.join(source_unzipped_path, "mods.xml"), "r") as f:
         soup = BeautifulSoup(f.read(), "lxml")
-        for granule in soup.find_all("relateditem", { "type": "constituent" }):
-            granules.append([
-                os.path.join(
-                    source_unzipped_path,
-                    "pdf",
-                    granule.find("identifier", { "type": "uri" }).text.split("/")[-1] + ".pdf"
-                ),
-                granule.find("granuledate").text.split("-")[0]
-            ])
+        for granule in soup.find_all("relateditem", {"type": "constituent"}):
+            granules.append(
+                [
+                    os.path.join(
+                        source_unzipped_path,
+                        "pdf",
+                        granule.find("identifier", {"type": "uri"}).text.split("/")[-1]
+                        + ".pdf",
+                    ),
+                    granule.find("granuledate").text.split("-")[0],
+                ]
+            )
 
     progress_bar = tqdm.tqdm(total=len(granules))
 
