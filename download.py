@@ -26,7 +26,7 @@ def process_granule(granule: typing.Tuple[str, str]):
     subprocess.run(f"cat {source_text_path} ff.txt >> {target_text_path}", shell=True)
 
 
-for i in range(74, 133):
+for i in range(1, 133):
     source_zip_path = os.path.join(TEMP_DIR, f"STATUTE-{i}.zip")
     source_unzipped_path = os.path.join(TEMP_DIR, f"STATUTE-{i}")
 
